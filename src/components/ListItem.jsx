@@ -6,13 +6,11 @@ export default function ListItem(props) {
     console.log(props)
 
     let priority;
-    if (props.todo.status === 'Done') {
-      priority = "✔️"
-    } else if (props.todo.status === 'In Progress') {
-      priority = '🙁'
+    if (props.todo.status === 'To Do' || props.todo.status === 'In Progress') {
+      priority = "🙁"
     } else {
-      priority =  '❌'
-    }
+      priority = '✔️'
+    } 
 
 
     return (
