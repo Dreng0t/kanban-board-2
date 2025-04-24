@@ -1,9 +1,12 @@
+import React from 'react';
 
-
-export default function About(){
-    return(
-        <>
-        
-        </>
-    )
+function About() {
+  return (
+    <div>
+      <h2>About Us</h2>
+      <p>This is the About page of the Kanban board application.</p>
+    </div>
+  );
 }
+
+export default About;
