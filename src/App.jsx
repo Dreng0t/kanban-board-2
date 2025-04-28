@@ -26,11 +26,14 @@ function App() {
 
     const newtodo = {
       ...newTodoDetails,
-      id: nextId
+      id: `${nextId}`
     }
     const newList = [newtodo, ...todoToDisplay]
 
     setTodoToDisplay(newList)
+    console.log(todoToDisplay)
+
+    
   }
 
 
@@ -47,6 +50,7 @@ function App() {
         // const newList = todoToDisplay.filter(movie => movie.id !== movieToDeleteId)
 
         setTodoToDisplay(newList);
+        
     }
 
   return (
