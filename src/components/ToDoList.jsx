@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 export default function ToDoList(props) {
     const [todos, setTodos] = useState(props.todosArr);
 
-  
     useEffect(() => {
         setTodos(props.todosArr);
     }, [props.todosArr]);
@@ -22,7 +21,6 @@ export default function ToDoList(props) {
         const draggedId = active.id;
         const newStatus = over.id;
 
-    
         props.updateTodoStatus(draggedId, newStatus);
     };
 
@@ -37,6 +35,10 @@ export default function ToDoList(props) {
         );
     };
 
+    const handleDelete = (todoId) => {
+        props.deleteTodo(todoId); // Handle delete in ToDoList
+    };
+
     return (
         <section className="TodoList">
             <h1>Number of To Dos: {todos.length}</h1>
@@ -48,19 +50,39 @@ export default function ToDoList(props) {
                 <div className="board">
                     <DroppableColumn id="To Do" title="To Do">
                         {todoToDos.map((todoObj) => (
-                            <ListItem key={todoObj.id} todo={todoObj} deleteTodo={props.deleteTodo} />
+                            <div key={todoObj.id}>
+                                {/* Render the ListItem as usual */}
+                                <ListItem todo={todoObj} deleteTodo={props.deleteTodo} />
+                                {/* Render the buttons outside ListItem */}
+                                <button onClick={() => handleDelete(todoObj.id)}>Delete this item</button>
+                                <Link to={`/todos/${todoObj.id}`}>
+                                    <button>More details</button>
+                                </Link>
+                            </div>
                         ))}
                     </DroppableColumn>
 
                     <DroppableColumn id="In Progress" title="In Progress">
                         {inProgressToDos.map((todoObj) => (
-                            <ListItem key={todoObj.id} todo={todoObj} deleteTodo={props.deleteTodo} />
+                            <div key={todoObj.id}>
+                                <ListItem todo={todoObj} deleteTodo={props.deleteTodo} />
+                                <button onClick={() => handleDelete(todoObj.id)}>Delete this item</button>
+                                <Link to={`/todos/${todoObj.id}`}>
+                                    <button>More details</button>
+                                </Link>
+                            </div>
                         ))}
                     </DroppableColumn>
 
                     <DroppableColumn id="Done" title="Done">
                         {doneToDos.map((todoObj) => (
-                            <ListItem key={todoObj.id} todo={todoObj} deleteTodo={props.deleteTodo} />
+                            <div key={todoObj.id}>
+                                <ListItem todo={todoObj} deleteTodo={props.deleteTodo} />
+                                <button onClick={() => handleDelete(todoObj.id)}>Delete this item</button>
+                                <Link to={`/todos/${todoObj.id}`}>
+                                    <button>More details</button>
+                                </Link>
+                            </div>
                         ))}
                     </DroppableColumn>
                 </div>

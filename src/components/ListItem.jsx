@@ -22,20 +22,29 @@ export default function ListItem(props) {
         priority = '✔️';
     }
 
+    
+    const handleDeleteClick = (e) => {
+        e.stopPropagation(); // Prevent event from being consumed by drag-and-drop context
+        console.log("Deleting todo with id:", props.todo); 
+        props.deleteTodo(props.todo.id); // Use the prop to call the delete function
+    };
+
+    const handleMoreDetailsClick = (e) => {
+        e.stopPropagation(); // Prevent event from being consumed by drag-and-drop context
+        // Navigate to the Todo details page or show a modal, depending on your implementation
+    };
+
+
     return (
-        <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
-            <p>{props.todo.title}</p>
-            <p>{props.todo.description}</p>
-            <p>Assignee: {props.todo.assignee}</p>
-            <p>Status: {props.todo.status} {priority}</p>
-            <p>Added on {props.todo.createdDate}</p>
-            <p>Due by {props.todo.dueDate}</p>
-            <p>
-                <button onClick={() => { props.deleteTodo(props.todo.id) }}>Delete this item</button>
-                <Link to={`/todos/${props.todo.id}`}>
-                    <button>More details</button>
-                </Link>
-            </p>
+        <div style={style} {...listeners} {...attributes}>
+            <div ref={setNodeRef} style={{ cursor: 'grab', border: '1px solid gray', padding: '10px', marginBottom: '10px', background: 'black' }}>
+                <p>{props.todo.title}</p>
+                <p>{props.todo.description}</p>
+                <p>Assignee: {props.todo.assignee}</p>
+                <p>Status: {props.todo.status} {priority}</p>
+                <p>Added on {props.todo.createdDate}</p>
+                <p>Due by {props.todo.dueDate}</p>
+            </div>
         </div>
     );
 }
