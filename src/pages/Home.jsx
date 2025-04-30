@@ -9,7 +9,7 @@ export default function Home(props) {
     return (
         <>
             <Sidebar />
-            <ToDoList todosArr={props.todosArr} deleteTodo={props.callbackToDelete} />
+            <ToDoList todosArr={props.todosArr} deleteTodo={props.callbackToDelete} updateTodoStatus={props.updateTodoStatus} />
             <Footer />
         </>
     )
