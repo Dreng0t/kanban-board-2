@@ -7,13 +7,13 @@ import kanbanboard from '../assets/kanbanboard.svg'
 
 export default function Navbar() {
     return (
-        <>
+        <div className="Navboard">
             <h1>KanBan Board</h1>
-            <img src={kanbanboard}></img>
+            <img className="logo" src={kanbanboard}></img>
             <nav>
                 <NavLink to='/about'>About us</NavLink>
                 <NavLink to='/'>Home</NavLink>
             </nav>
-        </>
+        </div>
     )
 }
