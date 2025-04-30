@@ -11,12 +11,12 @@ function AddTodo(props) {
 
     const navigate = useNavigate();
 
-    // handleSubmit: will handle the form to create new movies
+    
     const handleSubmit = (e) => {
         e.preventDefault();
 
 
-        // prepare an object with the details of the new movie
+      
         const newTodo = {
             title: title,
             assignee: assignee,
@@ -29,14 +29,14 @@ function AddTodo(props) {
 
         props.callbackToCreate(newTodo);
 
-        // clear form
+     
         setTitle("")
         setDescription("")
         setAssignee("")
         setPriority("")
         setDueDate("")
 
-        // redirect
+        
         navigate("/")
     }
 
@@ -82,34 +82,34 @@ function AddTodo(props) {
 
                 <label>
                     Chose a priority:
-                    <select 
-                        name="priority" 
-                        value={priority} 
+                    <select
+                        name="priority"
+                        value={priority}
                         onChange={(e) => setPriority(e.target.value)}
-                        >
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                </select>
+                    >
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
 
 
 
-            </label>
+                </label>
 
-            <label>
-                Due date:
-                <input
-                    type="date"
-                    name="duedate"
-                    placeholder="Due Date"
-                    value={dueDate}
-                    onChange={(e) => { setDueDate(e.target.value) }}
-                />
-            </label>
+                <label>
+                    Due date:
+                    <input
+                        type="date"
+                        name="duedate"
+                        placeholder="Due Date"
+                        value={dueDate}
+                        onChange={(e) => { setDueDate(e.target.value) }}
+                    />
+                </label>
 
 
-            <button>Create</button>
-        </form>
+                <button>Create</button>
+            </form>
         </section >
     )
 }
