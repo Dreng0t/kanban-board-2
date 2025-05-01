@@ -2,9 +2,11 @@ import { DndContext, useDroppable } from '@dnd-kit/core';
 import ListItem from '../components/ListItem';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function ToDoList(props) {
     const [todos, setTodos] = useState(props.todosArr);
+    const notify = () => toast('To Do Deleted !');
 
     useEffect(() => {
         setTodos(props.todosArr);
@@ -36,6 +38,7 @@ export default function ToDoList(props) {
     };
 
     const handleDelete = (todoId) => {
+        notify();
         props.deleteTodo(todoId); // Handle delete in ToDoList
     };
 

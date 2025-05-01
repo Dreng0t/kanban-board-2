@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
 
 
 export default function UpdateTodo(props) {
 
     console.log(props);
+
+    const notify = () => toast('To Do Updated !');
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -55,6 +58,8 @@ export default function UpdateTodo(props) {
         }
 
         console.log(newTodo);
+
+        notify();
 
         props.callbackToUpdate(newTodo);
 

@@ -10,6 +10,7 @@ import './App.css';
 import { Route } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import kanban from './data/kanban.json';
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
   const [todoToDisplay, setTodoToDisplay] = useState(kanban);
@@ -83,6 +84,7 @@ function App() {
         <Route path='*' element={<NotFound />} />
         <Route path='/update/:todoId' element={<UpdateTodo todoArr={todoToDisplay} callbackToUpdate={updateTodo} />} />
       </Routes>
+      <ToastContainer />
     </>
   );
 }

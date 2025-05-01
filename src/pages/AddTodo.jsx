@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 function AddTodo(props) {
 
@@ -10,6 +13,8 @@ function AddTodo(props) {
     const [dueDate, setDueDate] = useState("");
 
     const navigate = useNavigate();
+
+    const notify = () => toast('To Do Created !');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,6 +36,8 @@ function AddTodo(props) {
             createdDate: `${today}`,
             dueDate: dueDate
         }
+
+        notify();
 
         props.callbackToCreate(newTodo);
 
@@ -111,7 +118,7 @@ function AddTodo(props) {
                 </label>
 
 
-                <button>Create</button>
+                <button type="submit">Create</button>
             </form>
         </section >
     )
