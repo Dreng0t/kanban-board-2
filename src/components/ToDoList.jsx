@@ -52,9 +52,7 @@ export default function ToDoList(props) {
                         <h2>To do</h2>
                         {todoToDos.map((todoObj) => (
                             <div key={todoObj.id}>
-                                {/* Render the ListItem as usual */}
                                 <ListItem todo={todoObj} deleteTodo={props.deleteTodo} />
-                                {/* Render the buttons outside ListItem */}
                                 <button onClick={() => handleDelete(todoObj.id)}>Delete this item</button>
                                 <Link to={`/todos/${todoObj.id}`}>
                                     <button>More details</button>

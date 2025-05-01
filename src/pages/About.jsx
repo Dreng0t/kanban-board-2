@@ -4,7 +4,8 @@ function About() {
   return (
     <div>
       <h2>About Us</h2>
-      <p>This is Kanban board was developed by Florian Wunsch and Louis Chicot.</p>
+      <h3>Project Title: Kanban Board</h3>
+      <p>This is a Kanban board developed by Florian Wunsch and Louis Chicot.</p>
     </div>
   );
 }

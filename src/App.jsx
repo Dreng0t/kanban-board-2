@@ -5,6 +5,7 @@ import NotFound from './pages/NotFound';
 import Navbar from './components/Navbar';
 import TodoDetails from './pages/TodoDetails';
 import AddTodo from './pages/AddTodo';
+import UpdateTodo from './pages/UpdateTodo';
 import './App.css';
 import { Route } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
@@ -13,9 +14,11 @@ import kanban from './data/kanban.json';
 function App() {
   const [todoToDisplay, setTodoToDisplay] = useState(kanban);
 
+  const [todoDetailsTodDisplay, setTodoDetailsTodDisplay] = useState(null)
+
   useEffect(() => {
     console.log('Updated todos:', todoToDisplay);
-  }, [todoToDisplay]); 
+  }, [todoToDisplay]);
 
   const createTodo = (newTodoDetails) => {
     const todoIds = todoToDisplay.map((todoObj) => todoObj.id);
@@ -29,6 +32,23 @@ function App() {
     const newList = [newtodo, ...todoToDisplay];
     setTodoToDisplay(newList);
   };
+
+
+  const updateTodo = (newTodoDetails) => {
+    console.log("Updating todo", newTodoDetails);
+
+    // Update the todo list by replacing the old todo with the updated todo
+    setTodoToDisplay((prevTodos) =>
+        prevTodos.map((todo) =>
+            todo.id === newTodoDetails.id ? { ...todo, ...newTodoDetails } : todo
+        )
+    );
+};
+
+
+
+
+
 
   const deleteTodo = (todoToDeleteId) => {
     const newList = todoToDisplay.filter((todo) => todo.id !== todoToDeleteId);
@@ -61,6 +81,7 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/todos/:todoId' element={<TodoDetails todoArr={todoToDisplay} />} />
         <Route path='*' element={<NotFound />} />
+        <Route path='/update/:todoId' element={<UpdateTodo todoArr={todoToDisplay} callbackToUpdate={updateTodo} />} />
       </Routes>
     </>
   );

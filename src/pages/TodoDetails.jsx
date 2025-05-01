@@ -6,6 +6,8 @@ export default function TodoDetails(props) {
   
     const todo = props.todoArr.find((todoObj) => todoObj.id === todoId);
   
+  
+
     if (!todo) {
       return (
         <>
@@ -25,12 +27,17 @@ export default function TodoDetails(props) {
     return (
       <>
         <h1>{todo.title}</h1>
+        <div className="details">
         <p>{todo.description}</p>
         <p>Assignee: {todo.assignee}</p>
         <p>Status: {todo.status}</p>
         <p>Priority: {todo.priority} {emoji}</p>
         <p>Added on {todo.createdDate}</p>
         <p>Due by {todo.dueDate}</p>
+        </div>
+        <p>
+          <Link to={`/update/${todo.id}`} className="btn btn-primary">Update</Link>
+        </p>
   
         <p>
           <Link to="/" className="btn btn-primary">Back</Link>
