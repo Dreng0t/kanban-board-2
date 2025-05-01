@@ -11,32 +11,38 @@ function AddTodo(props) {
 
     const navigate = useNavigate();
 
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        let today = new Date();
 
-      
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        const yyyy = today.getFullYear();
+
+        today = `${yyyy}-${mm}-${dd}`
+
         const newTodo = {
             title: title,
             assignee: assignee,
             description: description,
             status: "To Do",
             priority: priority,
-            createdDate: "2025-115-67",
+            createdDate: `${today}`,
             dueDate: dueDate
         }
 
         props.callbackToCreate(newTodo);
 
-     
+
         setTitle("")
         setDescription("")
         setAssignee("")
         setPriority("")
         setDueDate("")
 
-        
+
         navigate("/")
     }
 
@@ -51,7 +57,7 @@ function AddTodo(props) {
                         type="text"
                         required
                         name="title"
-                        placeholder="movie title"
+                        placeholder="title"
                         value={title}
                         onChange={(e) => { setTitle(e.target.value) }}
                     />

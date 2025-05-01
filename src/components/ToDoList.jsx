@@ -48,7 +48,8 @@ export default function ToDoList(props) {
 
             <DndContext onDragEnd={handleDragEnd}>
                 <div className="board">
-                    <DroppableColumn id="To Do" title="To Do">
+                    <DroppableColumn id="To Do" >
+                        <h2>To do</h2>
                         {todoToDos.map((todoObj) => (
                             <div key={todoObj.id}>
                                 {/* Render the ListItem as usual */}
@@ -62,7 +63,8 @@ export default function ToDoList(props) {
                         ))}
                     </DroppableColumn>
 
-                    <DroppableColumn id="In Progress" title="In Progress">
+                    <DroppableColumn id="In Progress">
+                        <h2>In Progress</h2>
                         {inProgressToDos.map((todoObj) => (
                             <div key={todoObj.id}>
                                 <ListItem todo={todoObj} deleteTodo={props.deleteTodo} />
@@ -74,7 +76,8 @@ export default function ToDoList(props) {
                         ))}
                     </DroppableColumn>
 
-                    <DroppableColumn id="Done" title="Done">
+                    <DroppableColumn id="Done">
+                        <h2>Done</h2>
                         {doneToDos.map((todoObj) => (
                             <div key={todoObj.id}>
                                 <ListItem todo={todoObj} deleteTodo={props.deleteTodo} />

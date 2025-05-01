@@ -16,7 +16,7 @@ export default function TodoDetails(props) {
     }
   
     let emoji;
-    if (todo.status === 'To Do' || todo.status === 'In Progress') {
+    if (todo.priority === 'Medium' || todo.priority === 'High') {
       emoji = "🙁"
     } else {
       emoji = '✔️'
@@ -27,8 +27,8 @@ export default function TodoDetails(props) {
         <h1>{todo.title}</h1>
         <p>{todo.description}</p>
         <p>Assignee: {todo.assignee}</p>
-        <p>Status: {todo.status} {emoji}</p>
-        <p>Priority: {todo.priority}</p>
+        <p>Status: {todo.status}</p>
+        <p>Priority: {todo.priority} {emoji}</p>
         <p>Added on {todo.createdDate}</p>
         <p>Due by {todo.dueDate}</p>
   

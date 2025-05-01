@@ -51,7 +51,7 @@
 }
 
 .board {
-  display: flex;
+  display: inline-block;
   justify-content: space-between;
   gap: 20px;
 }
@@ -64,6 +64,24 @@
   background-color: darkgray;
 }
 
+.column h2 {
+  color: black;
+}
+
 .navboard {
-  display
+  display: flex;
+  justify-content: space-between;
+  background-color: darkgray;
+  color: black;
+}
+
+.navlinks {
+  height: 6em;
+  padding: 3em;
+}
+
+@media (min-width: 768px) {
+  .board {
+    display:flex;
+  }
 }
