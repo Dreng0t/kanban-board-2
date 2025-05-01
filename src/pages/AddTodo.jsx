@@ -11,7 +11,6 @@ function AddTodo(props) {
 
     const navigate = useNavigate();
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -35,13 +34,11 @@ function AddTodo(props) {
 
         props.callbackToCreate(newTodo);
 
-
         setTitle("")
         setDescription("")
         setAssignee("")
         setPriority("")
         setDueDate("")
-
 
         navigate("/")
     }
